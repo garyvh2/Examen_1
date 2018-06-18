@@ -28,6 +28,7 @@ public class Naipe {
 						Special.forEach(_Name -> {
 							try {
 								Carta _Special = new Carta(_Name, _Palo, 10);
+								_Special.setSpecial(true);
 								Cartas.add(_Special);
 							} catch (Exception e) {
 								// TODO Auto-generated catch block

@@ -4,6 +4,7 @@ public class Carta {
 	private String Nombre;
 	private Palo Palo;
 	private int Valor;
+	private boolean Special = false;
 	
 	// Constructor
 	public Carta(String _Nombre, Palo _Palo, int _Valor) throws Exception {
@@ -45,6 +46,12 @@ public class Carta {
 	}
 	public int getValor() {
 		return Valor;
+	}
+	public void setSpecial(boolean _Special) {
+		this.Special = _Special;
+	}
+	public boolean isSpecial() {
+		return Special;
 	}
 	
 	// Overries

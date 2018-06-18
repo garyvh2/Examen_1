@@ -38,6 +38,15 @@ public class Mesa {
 		return this;
 	}
 	
+	public void RepartirCartas (int Cantidad) {
+		for (int i = 0; i < Cantidad; i ++) {
+			this.getJugadores().forEach(_Jugador -> {
+				this.Repartidor.DarCarta(_Jugador);
+			});
+		}
+	}
+	
+	// 21
 	public Mesa Start21 () throws Exception {
 		if (this.getJugadores().size() == 0) {
 			throw new Exception ("Mesa Vacia!");
@@ -46,13 +55,26 @@ public class Mesa {
 		
 		return this;
 	}
-	
-	public void RepartirCartas (int Cantidad) {
-		for (int i = 0; i < Cantidad; i ++) {
-			this.getJugadores().forEach(_Jugador -> {
-				this.Repartidor.DarCarta(_Jugador);
-			});
-		}
+	public List<Jugador> Ganador21 () throws Exception {
+		List<Jugador> Ganadores = new ArrayList<Jugador>();
+		List<Jugador> Ganadores_Iter = new ArrayList<Jugador>();
+		
+		this.Jugadores.forEach(_Jugador -> {
+			Ganadores_Iter.clear();
+			Ganadores_Iter.addAll(Ganadores);
+			if (Ganadores.size() > 0)
+				Ganadores_Iter.forEach(_Ganador -> {
+					if (_Ganador.ManoVal() < _Jugador.ManoVal()) {
+						Ganadores.clear();
+						Ganadores.add(_Jugador);
+					} else if (_Ganador.ManoVal() == _Jugador.ManoVal()) {
+						Ganadores.add(_Jugador);
+					}
+				});
+			else 
+				Ganadores.add(_Jugador);
+		});
+		return Ganadores;
 	}
 	
 	

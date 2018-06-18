@@ -29,5 +29,14 @@ public class Jugador {
 		Mano = mano;
 	}
 	
+	// Custom Methods
+	public int ManoVal () {
+		int Value = 0;
+		for (Carta _Carta : this.Mano) {
+			Value += _Carta.getValor();
+		}
+		return Value;
+		
+	}
 	
 }
