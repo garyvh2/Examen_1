@@ -1,5 +1,6 @@
 package cr.ac.ucenfotec.Cartas;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Jugador {
@@ -9,7 +10,7 @@ public class Jugador {
 	// Constructor
 	public Jugador (String _Nombre, List<Carta> _Mano) {
 		this.Nombre = _Nombre;
-		this.Mano = _Mano;
+		this.Mano = _Mano != null ? _Mano : new ArrayList<Carta>();
 	}
 	// Get & Set
 	public String getNombre() {

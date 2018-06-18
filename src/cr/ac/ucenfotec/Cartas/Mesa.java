@@ -28,6 +28,15 @@ public class Mesa {
 		Jugadores = jugadores;
 	}
 	
+	// Custom Methods
+	public Mesa AgregarJugador (Jugador _Jugador) throws Exception {
+		if (this.getJugadores().size() == 4) {
+			throw new Exception ("Mesa Llena!");
+		}
+		this.getJugadores().add(_Jugador);
+		
+		return this;
+	}
 	
 	
 }
