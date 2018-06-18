@@ -75,4 +75,31 @@ public class Mesa_Test {
 		_Mesa.AgregarJugador(_J5);
 		
 	}
+	// 8. Start 21
+	@Test
+	public void Start_21 () throws Exception {
+		Repartidor _Repartidor = new Repartidor();
+		Mesa _Mesa = new Mesa(_Repartidor);
+		
+		// Jugadores
+		Jugador _J1 = new Jugador ("J1", null);
+		Jugador _J2 = new Jugador ("J2", null);
+		Jugador _J3 = new Jugador ("J3", null);
+		Jugador _J4 = new Jugador ("J4", null);
+		
+		_Mesa.AgregarJugador(_J1);
+		_Mesa.AgregarJugador(_J2);
+		_Mesa.AgregarJugador(_J3);
+		_Mesa.AgregarJugador(_J4);
+		
+		// Empezar
+		_Mesa.Start21();
+		
+		_Mesa.getJugadores().forEach(_Jugador -> {
+			assertEquals(2, _Jugador.getMano().size());
+		});
+		
+		assertEquals(44, _Mesa.getRepartidor().getNaipe().Size());
+		
+	}
 }

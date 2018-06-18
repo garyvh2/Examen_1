@@ -29,4 +29,5 @@ public class Jugador {
 		Mano = mano;
 	}
 	
+	
 }

@@ -38,5 +38,22 @@ public class Mesa {
 		return this;
 	}
 	
+	public Mesa Start21 () throws Exception {
+		if (this.getJugadores().size() == 0) {
+			throw new Exception ("Mesa Vacia!");
+		}
+		RepartirCartas(2);
+		
+		return this;
+	}
+	
+	public void RepartirCartas (int Cantidad) {
+		for (int i = 0; i < Cantidad; i ++) {
+			this.getJugadores().forEach(_Jugador -> {
+				this.Repartidor.DarCarta(_Jugador);
+			});
+		}
+	}
+	
 	
 }
