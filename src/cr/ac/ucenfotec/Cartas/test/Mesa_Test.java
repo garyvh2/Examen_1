@@ -3,14 +3,11 @@ package cr.ac.ucenfotec.Cartas.test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import java.util.Arrays;
 
 import org.junit.Test;
 
-import cr.ac.ucenfotec.Cartas.Carta;
 import cr.ac.ucenfotec.Cartas.Jugador;
 import cr.ac.ucenfotec.Cartas.Mesa;
-import cr.ac.ucenfotec.Cartas.Palo;
 import cr.ac.ucenfotec.Cartas.Repartidor;
 
 public class Mesa_Test {

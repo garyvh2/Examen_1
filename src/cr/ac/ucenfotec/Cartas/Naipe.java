@@ -51,6 +51,16 @@ public class Naipe {
 	}
 	
 	// Methods
+	public Carta PopFirst () {
+		Carta _Carta = this.Cartas.stream().findFirst().get();
+		this.Cartas.remove(_Carta);
+		return _Carta;
+	}
+	
+	public int Size() {
+		return this.Cartas.size();
+	}
+	
 	public Naipe Sort () {
 		Collections.shuffle(Cartas);
 		return this;

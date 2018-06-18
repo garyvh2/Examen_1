@@ -11,4 +11,10 @@ public class Repartidor {
 	public Naipe getNaipe () {
 		return Naipe;
 	}
+	
+	// Custom Methods
+	public void DarCarta (Jugador _Jugador) {
+		Carta _Carta = Naipe.PopFirst();
+		_Jugador.getMano().add(_Carta);
+	}
 }
