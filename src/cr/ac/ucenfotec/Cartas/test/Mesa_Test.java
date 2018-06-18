@@ -153,4 +153,26 @@ public class Mesa_Test {
 		_Mesa.AgregarJugador(_J1);
 		assertEquals(1, _Mesa.VerificarMano().size());
 	}
+	// 11. Veintiuno y medio
+	@Test
+	public void Veintiuno_Medio () throws Exception {
+		Repartidor _Repartidor = new Repartidor();
+		Mesa _Mesa = new Mesa(_Repartidor);
+		
+		// Cartas
+		Carta C_2 = new Carta ("2", Palo.ESCUDOS, 2);
+		Carta C_5 = new Carta ("5", Palo.GOTAS, 5);
+		Carta C_J = new Carta ("Jota", Palo.ESTRELLAS, 10);
+		C_J.setSpecial(true);
+		
+		// Jugadores
+		Jugador _J1 = new Jugador ("J1", Arrays.asList(C_2, C_J));
+		Jugador _J2 = new Jugador ("J2", Arrays.asList(C_5, C_J));
+		
+		
+		_Mesa.AgregarJugador(_J1);
+		_Mesa.AgregarJugador(_J2);
+		
+		assertEquals(_J1, _Mesa.Ganador21().stream().findFirst().get());
+	}	
 }

@@ -32,9 +32,21 @@ public class Jugador {
 	// Custom Methods
 	public int ManoVal () {
 		int Value = 0;
+		boolean has_special = false, 
+				has_2		= false, 
+				has_10		= false;
 		for (Carta _Carta : this.Mano) {
-			Value += _Carta.getValor();
+			int Card_Value = _Carta.getValor();
+			if (_Carta.isSpecial())
+				has_special = true;
+			if (Card_Value == 2)
+				has_2 = true;
+			if (Card_Value == 10)
+				has_10 = true;
+			Value += Card_Value;
 		}
+		if ((Value == 20 && has_special) || (has_2 && has_10))
+			Value = 21;
 		return Value;
 		
 	}
