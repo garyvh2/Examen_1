@@ -48,8 +48,8 @@ public class Mesa {
 	
 	// 21
 	public Mesa Start21 () throws Exception {
-		if (this.getJugadores().size() == 0) {
-			throw new Exception ("Mesa Vacia!");
+		if (this.getJugadores().size() < 2) {
+			throw new Exception ("Jugadores Insuficientes!");
 		}
 		RepartirCartas(2);
 		
@@ -92,6 +92,14 @@ public class Mesa {
 		});
 		
 		return Change;
+	}
+	// Ron
+	public Mesa StartRon () throws Exception {
+		if (this.getJugadores().size() < 2) {
+			throw new Exception ("Jugadores Insuficientes!");
+		}
+		RepartirCartas(7);
+		return this;
 	}
 	
 }
