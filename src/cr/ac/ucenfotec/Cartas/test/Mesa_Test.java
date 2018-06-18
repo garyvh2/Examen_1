@@ -4,10 +4,14 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Arrays;
+
 import org.junit.Test;
 
+import cr.ac.ucenfotec.Cartas.Carta;
 import cr.ac.ucenfotec.Cartas.Jugador;
 import cr.ac.ucenfotec.Cartas.Mesa;
+import cr.ac.ucenfotec.Cartas.Palo;
 import cr.ac.ucenfotec.Cartas.Repartidor;
 
 public class Mesa_Test {
@@ -124,5 +128,29 @@ public class Mesa_Test {
 		
 		assertTrue(_Mesa.Ganador21().size() >= 1);
 		
+	}
+
+	// 10. Cambiar Mano 21
+	@Test
+	public void Cambiar_Mano_21 () throws Exception {
+		Repartidor _Repartidor = new Repartidor();
+		Mesa _Mesa = new Mesa(_Repartidor);
+		
+		// Cartas
+		Carta C_3 = new Carta ("3", Palo.ESCUDOS, 3);
+		Carta C_5 = new Carta ("5", Palo.GOTAS, 5);
+		Carta C_J = new Carta ("Jota", Palo.ESTRELLAS, 10);
+		C_J.setSpecial(true);
+		
+		// Jugadores
+		Jugador _J1 = new Jugador ("J1", Arrays.asList(C_3, C_J));
+		Jugador _J2 = new Jugador ("J2", Arrays.asList(C_5, C_J));
+		
+		_Mesa.AgregarJugador(_J2);
+		
+		assertEquals(0, _Mesa.VerificarMano().size());
+		
+		_Mesa.AgregarJugador(_J1);
+		assertEquals(1, _Mesa.VerificarMano().size());
 	}
 }

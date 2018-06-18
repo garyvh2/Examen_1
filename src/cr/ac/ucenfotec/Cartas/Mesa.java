@@ -76,6 +76,22 @@ public class Mesa {
 		});
 		return Ganadores;
 	}
-	
+	public List<Jugador> VerificarMano () throws Exception {
+		List<Jugador> Change = new ArrayList<Jugador>();
+		
+		this.Jugadores.forEach(_Jugador -> {
+			boolean have_3 = false, have_special = false;
+			for (Carta _Carta : _Jugador.getMano()) {
+				if (_Carta.getValor() == 3)
+					have_3 = true;
+				if (_Carta.isSpecial())
+					have_special = true;
+			}
+			if (have_3 && have_special)
+				Change.add(_Jugador);
+		});
+		
+		return Change;
+	}
 	
 }
