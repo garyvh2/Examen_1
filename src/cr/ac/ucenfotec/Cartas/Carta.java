@@ -59,7 +59,9 @@ public class Carta {
 		// Casting
 		Carta _obj = (Carta) obj;
 		// Different Value : False
-		if (Valor != _obj.Valor) return false;
+		if (Valor != _obj.Valor ||
+			!Nombre.equals(_obj.getNombre()) ||
+			!Palo.equals(_obj.getPalo())) return false;
 		// Otherwise : True
 		return true;
 	}
