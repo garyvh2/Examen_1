@@ -63,4 +63,8 @@ public class Carta {
 		// Otherwise : True
 		return true;
 	}
+	@Override
+	public String toString() {
+		return this.Nombre + " : " + this.Palo + "(" + this.Valor + ")"; 
+	}
 }
