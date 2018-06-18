@@ -202,7 +202,7 @@ public class Mesa_Test {
 		assertEquals(24, _Mesa.getRepartidor().getNaipe().Size());
 		
 	}
-	// 14. Start Ron
+	// 14. Tomar una carta
 	@Test
 	public void Tomar_Carta () throws Exception {
 		Repartidor _Repartidor = new Repartidor();
@@ -222,15 +222,46 @@ public class Mesa_Test {
 		// Empezar
 		_Mesa.StartRon();
 		
-		_J1.TomarCarta(_Mesa.getDeck());
-		_J2.TomarCarta(_Mesa.getDeck());
+		_J1.TomarCarta(_Mesa.getDeck(), _Mesa.getDiscarted());
+		_J2.TomarCarta(_Mesa.getDeck(), _Mesa.getDiscarted());
 		
-		assertEquals(8, _J1.getMano().size());
-		assertEquals(8, _J2.getMano().size());
+		assertEquals(7, _J1.getMano().size());
+		assertEquals(7, _J2.getMano().size());
 		assertEquals(7, _J3.getMano().size());
 		assertEquals(7, _J4.getMano().size());
 		
-		assertEquals(22, _Mesa.getRepartidor().getNaipe().Size());
+		assertEquals(22, _Mesa.getDeck().Size());
+		
+	}
+	// 15. Descartar una carta
+	@Test
+	public void Descartar_Carta () throws Exception {
+		Repartidor _Repartidor = new Repartidor();
+		Mesa _Mesa = new Mesa(_Repartidor);
+		
+		// Jugadores
+		Jugador _J1 = new Jugador ("J1", null);
+		Jugador _J2 = new Jugador ("J2", null);
+		Jugador _J3 = new Jugador ("J3", null);
+		Jugador _J4 = new Jugador ("J4", null);
+		
+		_Mesa.AgregarJugador(_J1);
+		_Mesa.AgregarJugador(_J2);
+		_Mesa.AgregarJugador(_J3);
+		_Mesa.AgregarJugador(_J4);
+		
+		// Empezar
+		_Mesa.StartRon();
+		
+		_J1.TomarCarta(_Mesa.getDeck(), _Mesa.getDiscarted());
+		_J2.TomarCarta(_Mesa.getDeck(), _Mesa.getDiscarted());
+		
+		assertEquals(7, _J1.getMano().size());
+		assertEquals(7, _J2.getMano().size());
+		
+
+		assertEquals(2, _Mesa.getDiscarted().Size());
+		assertEquals(22, _Mesa.getDeck().Size());
 		
 	}
 }

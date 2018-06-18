@@ -1,6 +1,7 @@
 package cr.ac.ucenfotec.Cartas;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Jugador {
@@ -50,9 +51,16 @@ public class Jugador {
 		return Value;
 		
 	}
+	public Carta PopAny() {
+		Collections.shuffle(Mano);
+		Carta _Carta = this.Mano.stream().findFirst().get();
+		this.Mano.remove(_Carta);
+		return _Carta;
+	}
 	
-	public void TomarCarta (Naipe Deck) {
+	public void TomarCarta (Naipe Deck, Naipe Discarted) {
 		Mano.add(Deck.PopFirst());
+		Discarted.getCartas().add(PopAny());
 	}
 	
 }

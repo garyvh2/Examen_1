@@ -7,6 +7,7 @@ public class Mesa {
 	private Repartidor Repartidor;
 	private List<Jugador> Jugadores;
 	private Naipe Deck;
+	private Naipe Discarted;
 	
 	public Mesa (Repartidor _Repartidor) {
 		this.Repartidor = _Repartidor;
@@ -25,8 +26,8 @@ public class Mesa {
 		return Deck;
 	}
 
-	public void setRepartidor(Naipe _Deck) {
-		Deck = _Deck;
+	public Naipe getDiscarted() {
+		return Discarted;
 	}
 
 	public List<Jugador> getJugadores() {
@@ -109,6 +110,7 @@ public class Mesa {
 		}
 		RepartirCartas(7);
 		Deck = this.Repartidor.getNaipe();
+		Discarted = new Naipe().Clear();
 		return this;
 	}
 	

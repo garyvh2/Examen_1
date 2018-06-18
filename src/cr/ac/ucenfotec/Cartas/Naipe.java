@@ -67,6 +67,11 @@ public class Naipe {
 		return this;
 	}
 	
+	public Naipe Clear () {
+		this.Cartas.clear();
+		return this;
+	}
+
 	// Custom Methods
 	public boolean contains (Carta _Carta) {
 		return Cartas.stream().anyMatch(Carta -> {
