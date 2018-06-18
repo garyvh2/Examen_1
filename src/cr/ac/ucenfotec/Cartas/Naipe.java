@@ -2,6 +2,7 @@ package cr.ac.ucenfotec.Cartas;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Naipe {
@@ -22,6 +23,8 @@ public class Naipe {
 						Carta _As = new Carta("As", _Palo, 1);
 						Cartas.add(_As);
 					} else if (Number == 10) {
+						Carta _Carta = new Carta(Number.toString(), _Palo, Number);
+						Cartas.add(_Carta);
 						Special.forEach(_Name -> {
 							try {
 								Carta _Special = new Carta(_Name, _Palo, 10);
@@ -31,8 +34,6 @@ public class Naipe {
 								e.printStackTrace();
 							}
 						});
-						Carta _Carta = new Carta(Number.toString(), _Palo, Number);
-						Cartas.add(_Carta);
 					} else {
 						Carta _Carta = new Carta(Number.toString(), _Palo, Number);
 						Cartas.add(_Carta);
@@ -44,6 +45,18 @@ public class Naipe {
 		});
 	}
 	
+	// Get & Set
+	public List<Carta> getCartas () {
+		return Cartas;
+	}
+	
+	// Methods
+	public Naipe Sort () {
+		Collections.shuffle(Cartas);
+		return this;
+	}
+	
+	// Custom Methods
 	public boolean contains (Carta _Carta) {
 		return Cartas.stream().anyMatch(Carta -> {
 			return 	Carta.getValor() ==_Carta.getValor() 	&&
@@ -51,11 +64,6 @@ public class Naipe {
 					Carta.getPalo().equals(_Carta.getPalo());
 		});
 	}
-	// Get & Set
-	public List<Carta> getCartas () {
-		return Cartas;
-	}
-	
 	public void print() {
 		Cartas.forEach(Carta -> System.out.println(Carta.toString()));
 	}
