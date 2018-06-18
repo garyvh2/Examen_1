@@ -9,8 +9,18 @@ public class Naipe {
 	private List<Carta> Cartas;
 	// Constructor
 	public Naipe () throws Exception {
-		Cartas = new ArrayList<Carta>();
-		
+		LlenarCartas();
+	}
+	
+	// Get & Set
+	public List<Carta> getCartas () {
+		return Cartas;
+	}
+	
+	// Methods
+	public void LlenarCartas () {
+		this.Cartas = new ArrayList<Carta>();
+
 		List<Integer> Numeric = Arrays.asList(1,2,3,4,5,6,7,8,9,10);
 		List<String> Special  = Arrays.asList("Jota", "Quina", "Ka");
 		// Palos
@@ -46,12 +56,6 @@ public class Naipe {
 		});
 	}
 	
-	// Get & Set
-	public List<Carta> getCartas () {
-		return Cartas;
-	}
-	
-	// Methods
 	public Carta PopFirst () {
 		Carta _Carta = this.Cartas.stream().findFirst().get();
 		this.Cartas.remove(_Carta);

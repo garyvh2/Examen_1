@@ -264,4 +264,40 @@ public class Mesa_Test {
 		assertEquals(22, _Mesa.getDeck().Size());
 		
 	}
+	// 16. Reset
+	@Test
+	public void Reset_Mesa () throws Exception {
+		Repartidor _Repartidor = new Repartidor();
+		Mesa _Mesa = new Mesa(_Repartidor);
+		
+		// Jugadores
+		Jugador _J1 = new Jugador ("J1", null);
+		Jugador _J2 = new Jugador ("J2", null);
+		Jugador _J3 = new Jugador ("J3", null);
+		Jugador _J4 = new Jugador ("J4", null);
+		
+		_Mesa.AgregarJugador(_J1);
+		_Mesa.AgregarJugador(_J2);
+		_Mesa.AgregarJugador(_J3);
+		_Mesa.AgregarJugador(_J4);
+		
+		// Empezar
+		_Mesa.StartRon();
+		
+		_J1.TomarCarta(_Mesa.getDeck(), _Mesa.getDiscarted());
+		_J2.TomarCarta(_Mesa.getDeck(), _Mesa.getDiscarted());
+		
+		assertEquals(7, _J1.getMano().size());
+		assertEquals(7, _J2.getMano().size());
+		
+
+		assertEquals(2, _Mesa.getDiscarted().Size());
+		assertEquals(22, _Mesa.getDeck().Size());
+		
+		_Mesa.Reset();
+		
+
+		assertEquals(52, _Mesa.getRepartidor().getNaipe().Size());
+		assertEquals(0, _Mesa.getJugadores().size());
+	}
 }

@@ -114,4 +114,12 @@ public class Mesa {
 		return this;
 	}
 	
+	// General
+	public Mesa Reset () throws Exception {
+		this.Repartidor.getNaipe().LlenarCartas();
+		this.Jugadores	= new ArrayList<Jugador>();
+		this.Deck		= null;
+		
+		return this;
+	}
 }
