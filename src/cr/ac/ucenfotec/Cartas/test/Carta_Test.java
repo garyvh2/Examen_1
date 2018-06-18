@@ -34,6 +34,15 @@ public class Carta_Test {
 		new Carta("kA", 	Palo.ESTRELLAS, 10);
 		new Carta("as", 	Palo.ESTRELLAS, 1);
 	}
+
+	// 2. Equal Cards
+	@Test
+	public void Equal_Cards() throws Exception {
+		Carta C_1 = new Carta ("10", 	Palo.ESCUDOS, 10);
+		Carta C_2 = new Carta ("jota",	Palo.FLORES,  10);
+		
+		assertEquals(C_1, C_2);
+	}
 	
 	
 

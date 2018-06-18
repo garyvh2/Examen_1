@@ -47,4 +47,20 @@ public class Carta {
 		return Valor;
 	}
 	
+	// Overries
+	@Override
+	public boolean equals(Object obj) {
+		// Same instance : True
+		if (this == obj) 				return true;
+		// Null instance : False
+		if (obj == null)				return false;
+		// Different Kind : False
+		if (!(obj instanceof Carta))	return false;
+		// Casting
+		Carta _obj = (Carta) obj;
+		// Different Value : False
+		if (Valor != _obj.Valor) return false;
+		// Otherwise : True
+		return true;
+	}
 }
