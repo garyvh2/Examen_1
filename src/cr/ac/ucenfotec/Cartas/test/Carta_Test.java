@@ -2,12 +2,16 @@ package cr.ac.ucenfotec.Cartas.test;
 
 import static org.junit.Assert.*;
 
+import java.util.Arrays;
+
 import org.junit.Test;
 
 import cr.ac.ucenfotec.Cartas.Carta;
+import cr.ac.ucenfotec.Cartas.Jugador;
 import cr.ac.ucenfotec.Cartas.Naipe;
 import cr.ac.ucenfotec.Cartas.Palo;
 import cr.ac.ucenfotec.Cartas.Repartidor;
+import junit.framework.Assert;
 
 public class Carta_Test {
 
@@ -84,4 +88,15 @@ public class Carta_Test {
 //		assertNotEquals(new Carta ("Ka", Palo.GOTAS, 10), 	_Repartidor.getNaipe().getCartas().stream().reduce((first, second) -> second).orElse(null));
 //	}
 	
+	// 5. Jugador
+	public void Valid_Jugador () throws Exception {
+		Carta C_1 = new Carta ("10", 	Palo.ESCUDOS, 10);
+		Carta C_2 = new Carta ("jota",	Palo.FLORES,  10);
+		
+		Jugador _Jugador = new Jugador ("Gary", Arrays.asList(C_1, C_2));
+		
+		assertEquals(C_1, _Jugador.getMano().stream().findFirst());
+		assertEquals("Gary", _Jugador.getNombre());
+		assertNotNull(_Jugador);
+	}
 }
