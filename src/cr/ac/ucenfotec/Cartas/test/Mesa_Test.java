@@ -175,7 +175,7 @@ public class Mesa_Test {
 		
 		assertEquals(_J1, _Mesa.Ganador21().stream().findFirst().get());
 	}	
-	// 8. Start Ron
+	// 13. Start Ron
 	@Test
 	public void Start_Ron () throws Exception {
 		Repartidor _Repartidor = new Repartidor();
@@ -200,6 +200,37 @@ public class Mesa_Test {
 		});
 		
 		assertEquals(24, _Mesa.getRepartidor().getNaipe().Size());
+		
+	}
+	// 14. Start Ron
+	@Test
+	public void Tomar_Carta () throws Exception {
+		Repartidor _Repartidor = new Repartidor();
+		Mesa _Mesa = new Mesa(_Repartidor);
+		
+		// Jugadores
+		Jugador _J1 = new Jugador ("J1", null);
+		Jugador _J2 = new Jugador ("J2", null);
+		Jugador _J3 = new Jugador ("J3", null);
+		Jugador _J4 = new Jugador ("J4", null);
+		
+		_Mesa.AgregarJugador(_J1);
+		_Mesa.AgregarJugador(_J2);
+		_Mesa.AgregarJugador(_J3);
+		_Mesa.AgregarJugador(_J4);
+		
+		// Empezar
+		_Mesa.StartRon();
+		
+		_J1.TomarCarta(_Mesa.getDeck());
+		_J2.TomarCarta(_Mesa.getDeck());
+		
+		assertEquals(8, _J1.getMano().size());
+		assertEquals(8, _J2.getMano().size());
+		assertEquals(7, _J3.getMano().size());
+		assertEquals(7, _J4.getMano().size());
+		
+		assertEquals(22, _Mesa.getRepartidor().getNaipe().Size());
 		
 	}
 }

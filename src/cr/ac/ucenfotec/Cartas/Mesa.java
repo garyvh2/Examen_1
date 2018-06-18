@@ -6,6 +6,7 @@ import java.util.List;
 public class Mesa {
 	private Repartidor Repartidor;
 	private List<Jugador> Jugadores;
+	private Naipe Deck;
 	
 	public Mesa (Repartidor _Repartidor) {
 		this.Repartidor = _Repartidor;
@@ -18,6 +19,14 @@ public class Mesa {
 
 	public void setRepartidor(Repartidor repartidor) {
 		Repartidor = repartidor;
+	}
+	
+	public Naipe getDeck() {
+		return Deck;
+	}
+
+	public void setRepartidor(Naipe _Deck) {
+		Deck = _Deck;
 	}
 
 	public List<Jugador> getJugadores() {
@@ -99,6 +108,7 @@ public class Mesa {
 			throw new Exception ("Jugadores Insuficientes!");
 		}
 		RepartirCartas(7);
+		Deck = this.Repartidor.getNaipe();
 		return this;
 	}
 	

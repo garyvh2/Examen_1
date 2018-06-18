@@ -51,4 +51,8 @@ public class Jugador {
 		
 	}
 	
+	public void TomarCarta (Naipe Deck) {
+		Mano.add(Deck.PopFirst());
+	}
+	
 }
